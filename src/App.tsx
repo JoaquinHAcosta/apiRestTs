@@ -8,7 +8,6 @@ import { Form } from './components/Form'
 function App() {
   
   const [characters, setCharacters] = React.useState<Char[]>([])
-  const [newCharacter, setNewCharacter] = React.useState<Char>()
 
   const divRef = React.useRef<HTMLDivElement>(null)
   
