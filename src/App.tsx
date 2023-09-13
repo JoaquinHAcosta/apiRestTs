@@ -3,6 +3,7 @@ import './App.css'
 import { DATA } from './data/characters'
 import { CharacterList } from './components/CharacterList'
 import { type Char, type Characters } from './types'
+import { Form } from './components/Form'
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
         <CharacterList
           characters={characters}
         />
+        <Form></Form>
       </div>
     </>
   )

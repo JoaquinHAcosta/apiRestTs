@@ -37,6 +37,35 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+.lista-chars {
+  list-style: none;  
+}
+
+.lista-chars li {
+  border: 1px solid white;
+  width: 500px;
+  text-decoration: none;
+}
+
+.form-create {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid purple;
+  border-radius: 1em;
+  padding: 1em;
+  background-color: rgb(130, 56, 221);
+}
+
+.form-create input{
+  margin-bottom: 1em;
+  background-color: rgb(222, 212, 193);
+  color: black;
+  padding: 13px;
+  font-size: 16px;
+  border: none;
+}
+
+.form-create input[type="submit"] {
+  background-color: yellow;
+  border-radius: 1em;
 }
