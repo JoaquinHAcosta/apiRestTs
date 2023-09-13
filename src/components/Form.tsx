@@ -1,7 +1,11 @@
 import React from 'react'
-import { Char } from '../types'
+import { type Char } from '../types'
 
-export const Form = () => {
+interface FormProps {
+    onNewChar: (newCharacter: Char) => void
+}
+
+export const Form = ({ onNewChar }: FormProps) => {
 
     const [ inputValues, setInputValues ] = React.useState<Char>({
         nick: "",
@@ -10,15 +14,16 @@ export const Form = () => {
         avatar: ""
     })
 
-    const handleChange = (event) => {
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setInputValues({
             ...inputValues,
-            [event.target.name] : event.targe.value
+            [event.target.name] : event.target.value
         })
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        onNewChar(inputValues)
     }
 
     return (
