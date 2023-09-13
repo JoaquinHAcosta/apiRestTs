@@ -1,5 +1,6 @@
 import React from 'react'
 import { type Char } from '../types'
+import { useNewCharacterForm } from '../hooks/useNewCharacterForm'
 
 interface FormProps {
     onNewChar: (newCharacter: Char) => void
@@ -7,23 +8,26 @@ interface FormProps {
 
 export const Form = ({ onNewChar }: FormProps) => {
 
-    const [ inputValues, setInputValues ] = React.useState<Char>({
-        nick: "",
-        role: "",
-        gearScore: 0,
-        avatar: ""
-    })
+    const [ inputValues, dispatch ] = useNewCharacterForm()
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setInputValues({
-            ...inputValues,
-            [event.target.name] : event.target.value
+        const { name, value } = event.target
+        dispatch({
+            type: 'CHANGE_VALUE',
+            payload: {
+                inputName: name,
+                inputValue: value
+            }
         })
+        
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         onNewChar(inputValues)
+        dispatch({
+            type: 'CLEAR'
+        })
     }
 
     return (
